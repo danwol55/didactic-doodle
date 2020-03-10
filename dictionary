@@ -1,0 +1,89 @@
+import java.util.Map;
+import java.util.Scanner;
+import java.util.TreeMap;
+
+public class Slownik
+{
+    public static void main(String[] args)
+    {
+        Map<String, String>vocabular = new TreeMap<>();
+        Scanner input = new Scanner(System.in);
+        int numberComments = input.nextInt();
+        for(int i=0; i<numberComments; i++)
+        {
+            String command = input.next();
+            switch (command)
+            {
+                case "insert":
+                    String word1 = input.next();
+                    String word2 = input.next();
+                    vocabular.put(word1, word2);
+                    break;
+
+                case "list":
+                    if(vocabular.isEmpty())
+                    {
+                        System.out.println("empty");
+                    }
+                    else
+                    {
+                        for(Map.Entry<String, String>enter : vocabular.entrySet())
+                        {
+                            String key = enter.getKey();
+                            String value = enter.getValue();
+                            System.out.println(key+" "+value);
+                        }
+                    }
+                    break;
+
+                case "reverse_list":
+                    if(vocabular.isEmpty())
+                    {
+                        System.out.println("empty");
+                    }
+                    else
+                    {
+                        int size = vocabular.size();
+                        String[][] words = new String[size][2];
+                        int iterator = vocabular.size()-1;
+                        for(Map.Entry<String, String>enter : vocabular.entrySet())
+                        {
+                            String key = enter.getKey();
+                            String value = enter.getValue();
+                            words[iterator][0] = key;
+                            words[iterator][1] = value;
+                            iterator--;
+                        }
+                        for(int i1=0; i1<vocabular.size(); i1++)
+                        {
+                            System.out.println(words[i1][0] + " " + words[i1][1]);
+                        }
+                    }
+                    break;
+
+                case "find":
+                    String word = input.next();
+                    if(vocabular.containsKey(word))
+                    {
+                        System.out.println(vocabular.get(word));
+                    }
+                    else
+                    {
+                        System.out.println("cannot find");
+                    }
+                    break;
+
+                case "remove":
+                    String wordToRemove = input.next();
+                    if(vocabular.containsKey(wordToRemove))
+                    {
+                        vocabular.remove(wordToRemove);
+                    }
+                    else
+                    {
+                        System.out.println("cannot find");
+                    }
+            }
+        }
+    }
+}
