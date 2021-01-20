@@ -1,0 +1,44 @@
+import java.util.Scanner;
+
+public class projekt3
+{
+    public static void main(String[] args)
+    {
+        int wynik, liczba1, liczba2;
+        Scanner wejscie = new Scanner(System.in);
+        while(wejscie.hasNext())
+        {
+            char symbol = wejscie.next().charAt(0);
+            liczba1 = wejscie.nextInt();
+            liczba2 = wejscie.nextInt();
+
+            switch (symbol)
+            {
+                case '+':
+                    wynik = liczba1 + liczba2;
+                    System.out.println(wynik);
+                    break;
+                case '-':
+                    wynik = liczba1 - liczba2;
+                    System.out.println(wynik);
+                    break;
+                case '*':
+                    wynik = liczba1 * liczba2;
+                    System.out.println(wynik);
+                    break;
+                case '/':
+                    if(liczba2 != 0)
+                    {
+                        wynik = liczba1 / liczba2;
+                        System.out.println(wynik);
+                    }
+                    break;
+                case '%':
+                    wynik = liczba1 % liczba2;
+                    System.out.println(wynik);
+                    break;
+            }
+        }
+
+    }
+}
