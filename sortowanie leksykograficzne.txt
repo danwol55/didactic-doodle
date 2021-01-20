@@ -1,0 +1,80 @@
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+public class Letters
+{
+    static String[] words;
+    static Map<Character, Integer> weights;
+    public static void main(String[] args)
+    {
+        weights = new LinkedHashMap<>();
+        Scanner input = new Scanner(System.in);
+        String order = input.nextLine();
+        for (int i = 0; i < order.length(); i++)
+        {
+            weights.put(order.charAt(i), i);
+        }
+
+        int numberOfWords = input.nextInt();
+        words = new String[numberOfWords];
+        for(int i=0; i<numberOfWords; i++)
+        {
+            words[i] = input.next();
+        }
+
+        boolean holdIteration = false;
+        for (int i = 0; i < words.length - 1; i++)
+        {
+            if (holdIteration) i--;
+            String basicWord = words[i];
+            short letterIndex = 0;
+            char basicLetter = basicWord.charAt(letterIndex);
+            holdIteration = false;
+            for (int i1 = i + 1; i1 < words.length; i1++)
+            {
+                String actualWord = words[i1];
+                char actualLetter = actualWord.charAt(letterIndex);
+                if (basicLetter == actualLetter)
+                {
+                    int wordLength;
+                    wordLength = Math.min(basicWord.length(), actualWord.length());
+
+                    for (int i2 = 0; i2 < wordLength; i2++)
+                    {
+                        if (basicWord.charAt(i2) != actualWord.charAt(i2))
+                        {
+                            int basicLetterWeight = weights.get(basicWord.charAt(i2));
+                            int actualLetterWeight = weights.get(actualWord.charAt(i2));
+                            if (basicLetterWeight > actualLetterWeight)
+                            {
+                                words[i] = actualWord;
+                                words[i1] = basicWord;
+                                holdIteration = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+                else if(basicLetter != actualWord.charAt(letterIndex))
+                {
+                    int basicLetterWeight = weights.get(basicLetter);
+                    int actualLetterWeight = weights.get(actualWord.charAt(letterIndex));
+                    if (basicLetterWeight > actualLetterWeight)
+                    {
+                        words[i] = actualWord;
+                        words[i1] = basicWord;
+                        holdIteration = true;
+                        break;
+                    }
+                    else continue;
+                }
+                if(holdIteration) break;
+            }
+        }
+        for (String word : words)
+        {
+            System.out.println(word);
+        }
+    }
+}

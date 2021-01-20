@@ -1,0 +1,96 @@
+import java.util.Scanner;
+
+import java.lang.String;
+
+import static java.lang.Character.*;
+
+public class projekt3
+{
+    public static void main(String[] args)
+    {
+        String html;
+        String html1 = "";
+        Scanner wejscie = new Scanner(System.in);
+        while(wejscie.hasNext())
+        {
+            boolean zamkniete = true;
+            html = wejscie.nextLine();
+            for(int i=0; i<html.length(); i++)
+            {
+                if(html.charAt(i)=='<')
+                {
+                    zamkniete = false;
+                }
+                else if(html.charAt(i)=='>')
+                {
+                    zamkniete = true;
+                }
+                if(zamkniete == false)
+                {
+                    if(isAlphabetic(html.charAt(i)))
+                    {
+                        if(isLowerCase(html.charAt(i)))
+                        {
+                            html1 += toUpperCase(html.charAt(i));
+                        }
+                        else
+                        {
+                            html1 += html.charAt(i);
+                        }
+                    }
+                    else
+                    {
+                        html1 += html.charAt(i);
+                    }
+                }
+                else
+                {
+                    html1 += html.charAt(i);
+                }
+
+            }
+            html1 += "\n";
+        }
+        System.out.println(html1);
+
+    }
+}
+
+import java.util.Scanner;
+
+public class TagsHtml
+{
+    public static void main(String[] args)
+    {
+        Scanner input = new Scanner(System.in);
+        StringBuilder output = new StringBuilder();
+        while(input.hasNextLine())
+        {
+            boolean toUpper = false;
+            String tag = input.nextLine();
+            for (int i = 0; i < tag.length(); i++)
+            {
+                if (tag.charAt(i) == '<')
+                {
+                    toUpper = true;
+                    output.append(tag.charAt(i));
+                }
+                else if (tag.charAt(i) == '>')
+                {
+                    toUpper = false;
+                    output.append(tag.charAt(i));
+                }
+                else
+                {
+                    if (toUpper) output.append(Character.toUpperCase(tag.charAt(i)));
+                    else output.append(tag.charAt(i));
+                }
+            }
+            output.append("\n");
+        }
+        System.out.println(output);
+        //while can be stopped by pressing ctrl+D
+
+    }
+}
+

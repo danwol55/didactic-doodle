@@ -1,0 +1,40 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
+
+public class Serial
+{
+    public static void main(String[] args)
+    {
+        Scanner input = new Scanner(System.in);
+        while(input.hasNext())
+        {
+            int value = input.nextInt();
+            int numberOfValues = input.nextInt();
+            ArrayList<Integer>values = new ArrayList<>();
+            for(int i=0; i<numberOfValues; i++)
+            {
+                int number = input.nextInt();
+                values.add(number);
+            }
+            Collections.sort(values);
+            Collections.reverse(values);
+            int sum = 0;
+            boolean isPossible = false;
+            for (Integer integer : values)
+            {
+                if (sum + integer <= value)
+                {
+                    sum += integer;
+                }
+                if (sum == value)
+                {
+                    isPossible = true;
+                    break;
+                }
+            }
+            if(isPossible) System.out.println(1);
+            else System.out.println(0);
+        }
+    }
+}

@@ -1,0 +1,38 @@
+import java.math.BigInteger;
+import java.util.Scanner;
+
+public class Strong
+{
+    public static void main(String[] args)
+    {
+        Scanner input = new Scanner(System.in);
+        int suite = input.nextInt();
+        for(int i=0; i<suite; i++)
+        {
+            String number = input.next();
+            BigInteger number1 = new BigInteger(number);
+            BigInteger result = strong(number1);
+            String result1 = result.toString();
+            for(int i1=result1.length()-1; i1>=0; i1--)
+            {
+                if(result1.charAt(i1)!='0')
+                {
+                    System.out.println(result1.charAt(i1));
+                    break;
+                }
+            }
+        }
+
+    }
+    public static BigInteger strong(BigInteger n)
+    {
+        BigInteger a = new BigInteger("1");
+        if(n.intValue()==1) return a;
+        else return n.multiply(strong(n.subtract(a)));
+    }
+    public static long exponent(int a, int b)
+    {
+        if(b==0) return 1;
+        else return a*exponent(a, b-1);
+    }
+}

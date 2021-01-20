@@ -1,0 +1,22 @@
+import java.util.Scanner;
+
+public class projekt3
+{
+    public static void main(String[] args)
+    {
+        Scanner wejscie = new Scanner(System.in);
+        short zestaw = wejscie.nextShort();
+        short ile_liczb;
+        int liczba;
+
+        for (int i = 0; i < zestaw; i++) {
+            int suma = 0;
+            ile_liczb = wejscie.nextShort();
+            for (int j = 0; j < ile_liczb; j++) {
+                liczba = wejscie.nextInt();
+                suma += liczba;
+            }
+            System.out.println(suma);
+        }
+    }
+}

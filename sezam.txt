@@ -1,0 +1,43 @@
+import java.util.Scanner;
+
+public class Sezam
+{
+    public static void main(String[] args)
+    {
+        Scanner input = new Scanner(System.in);
+        String text1 = input.next();
+        String text2 = input.next();
+        int iterator = 0;
+        String word = "";
+        for(int i=0; i<text2.length(); i++)
+        {
+            if(text2.charAt(i)==text1.charAt(iterator))
+            {
+                word += text2.charAt(i);
+                iterator++;
+            }
+            else
+            {
+                word = "";
+                iterator = 0;
+            }
+        }
+        if(word.length()==text1.length())
+        {
+            if(word.equals(text1)) System.out.println("yes");
+            else System.out.println("no");
+        }
+        if((word.length()>0) && (word.length()<text1.length()))
+        {
+            int lenght2 = word.length();
+            int lenght1 = text1.length();
+            for(int i=0; i<lenght1-lenght2; i++)
+            {
+                word += text2.charAt(i);
+            }
+            if(word.equals(text1)) System.out.println("yes");
+            else System.out.println("no");
+        }
+        else System.out.println("no");
+    }
+}

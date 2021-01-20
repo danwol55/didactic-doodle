@@ -1,0 +1,45 @@
+import java.util.HashMap;
+import java.util.Scanner;
+
+public class Lider
+{
+    public static void main(String[] args)
+    {
+        Scanner input = new Scanner(System.in);
+        HashMap<Integer, Integer> map = new HashMap<>();
+        int test = input.nextInt();
+        for(int i=0; i<test; i++)
+        {
+            int howManyNumbers = input.nextInt();
+            int[] tab = new int[howManyNumbers];
+            for(int i1=0; i1<howManyNumbers; i1++)
+            {
+                tab[i1] = input.nextInt();
+            }
+            float value = howManyNumbers/2.0f;
+            for(int i1=0; i1<howManyNumbers; i1++)
+            {
+                int counter = 0;
+                int baseNumber = tab[i1];
+                for(int i2=0; i2<howManyNumbers; i2++)
+                {
+                    if(tab[i2]==baseNumber) counter++;
+                }
+                map.put(baseNumber, counter);
+            }
+            boolean isBiggerValue = false;
+            for(HashMap.Entry<Integer, Integer>enter : map.entrySet())
+            {
+                Integer key = enter.getKey();
+                Integer value1 = enter.getValue();
+                if(value1>value)
+                {
+                    System.out.println(key);
+                    isBiggerValue = true;
+                }
+            }
+            if(!isBiggerValue) System.out.println(-1);
+            map.clear();
+        }
+    }
+}

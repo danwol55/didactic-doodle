@@ -1,0 +1,58 @@
+import java.util.Scanner;
+
+public class Wskazania
+{
+    public static void main(String[] args)
+    {
+        Scanner wejscie = new Scanner(System.in);
+        int zestaw = wejscie.nextInt();
+        for(int e=0; e<zestaw; e++)
+        {
+            int ilePrzedmiotow = wejscie.nextInt();
+            int ileWskazan = wejscie.nextInt();
+            if (ilePrzedmiotow == ileWskazan)
+            {
+                System.out.println(1);
+            }
+            else
+            {
+                int tablica[] = new int[ileWskazan];
+                for (int j = 0; j < ileWskazan; j++)
+                {
+                    tablica[j] = j + 1;
+                }
+                int indeks = 0;
+                int zliczenia = 1;
+                int i = ileWskazan - 1;
+                for (int c = 0; c < 100; c++)
+                {
+                    tablica[i]++; zliczenia++;
+                    if (tablica[i] == ilePrzedmiotow)
+                    {
+                        if (i - 1 != -1)
+                        {
+                            indeks = i - 1;
+                            tablica[indeks]++;
+                            tablica[i] = tablica[indeks] + 1;
+                            zliczenia++;
+                        }
+                        else break;
+                    }
+                    if (tablica[indeks] == ilePrzedmiotow - 1)
+                    {
+                        if (indeks-1 != -1)
+                        {
+                            indeks -= 1;
+                            tablica[indeks]++;
+                            tablica[indeks+1] = tablica[indeks] + 1;
+                            tablica[i] = tablica[indeks] + 2;
+                            zliczenia++;
+                        }
+                        else break;
+                    }
+                }
+                System.out.print(zliczenia);
+            }
+        }
+    }
+}

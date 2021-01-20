@@ -1,0 +1,19 @@
+import java.util.Scanner;
+
+public class projekt3
+{
+    public static void main(String[] args)
+    {
+        int suma=0;
+        int liczba;
+        Scanner wejscie = new Scanner(System.in);
+        while(wejscie.hasNext())
+        {
+            liczba = wejscie.nextInt();
+            suma += liczba;
+            System.out.println(suma);
+
+        }
+
+    }
+}

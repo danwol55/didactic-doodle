@@ -1,0 +1,35 @@
+import java.util.Scanner;
+
+public class Podslowa
+{
+    public static void main(String[] args)
+    {
+        Scanner wejscie = new Scanner(System.in);
+        int lenght1 = wejscie.nextInt();
+        String word1 = wejscie.next();
+        int lenght2 = wejscie.nextInt();
+        String word2 = wejscie.next();
+        char[] wordA = word1.toCharArray();
+        char[] wordB = word2.toCharArray();
+
+        int counter = 0, lenghtA;
+        if(lenght1<lenght2) lenghtA = lenght1;
+        else if(lenght1>lenght2) lenghtA = lenght2;
+        else lenghtA = lenght1;
+
+        for(int i=0; i<lenghtA; i++)
+        {
+            char actualLetter = wordA[i];
+            for(int j=0; j<lenght2; j++)
+            {
+                if(actualLetter == wordB[j])
+                {
+                    counter++; break;
+                }
+            }
+        }
+
+        System.out.print(counter);
+
+    }
+}

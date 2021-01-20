@@ -1,0 +1,100 @@
+import java.util.Scanner;
+
+import static java.lang.Character.isAlphabetic;
+
+public class projekt1
+{
+    public static void main(String[] args)
+    {
+        int spacje=0, przesuniecie = 0;
+        String dokument, format_kwix="";
+        Scanner wejscie = new Scanner(System.in);
+
+        while(wejscie.hasNext())
+        {
+            boolean otwarte = false;
+           dokument = wejscie.nextLine();
+           for(int i=0; i<dokument.length(); i++)
+           {
+               if(dokument.charAt(i) == '<')
+               {
+                   spacje = 0;
+                   otwarte = true;
+                   if(dokument.charAt(i+1)!='/')
+                   {
+                       for (int j = 0; j < przesuniecie; j++)
+                       {
+                           format_kwix += "    ";
+                       }
+                       przesuniecie++;
+                   }
+               }
+               else if (dokument.charAt(i) == '/')
+               {
+                   przesuniecie--;
+                   if(isAlphabetic(dokument.charAt(i+1)))
+                   {
+                       while(dokument.charAt(i)!='>') i++;
+                   }
+               }
+               else if (dokument.charAt(i) == 32)
+               {
+                   if(isAlphabetic(dokument.charAt(i+1)))
+                   {
+                       spacje++;
+                       if (otwarte == true)
+                       {
+                           if (spacje == 1)
+                           {
+                               format_kwix += ":";
+                               format_kwix += "\n";
+                               for (int j = 0; j < przesuniecie; j++)
+                               {
+                                   format_kwix += "    ";
+                               }
+                           }
+                           if (spacje > 1)
+                           {
+                               format_kwix += "\n";
+                               for (int j = 0; j < przesuniecie; j++)
+                               {
+                                   format_kwix += "    ";
+                               }
+                           }
+                       }
+                   }
+               }
+               else if(dokument.charAt(i) == '=')
+               {
+                   format_kwix+=" = ";
+               }
+               else if(dokument.charAt(i) == '"')
+               {
+                   continue;
+               }
+               else if(dokument.charAt(i) == '>')
+               {
+                   if(spacje==0)
+                   {
+                       format_kwix += ":\n";
+                   }
+                   if(spacje>0)
+                   {
+                       format_kwix += "\n";
+                   }
+                   otwarte = false;
+               }
+               else
+               {
+                   format_kwix+=dokument.charAt(i);
+               }
+           }
+
+        }
+        System.out.println(format_kwix);
+
+
+
+
+    }
+}

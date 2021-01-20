@@ -1,0 +1,40 @@
+import java.util.Scanner;
+
+public class Permutacje
+{
+    public static void main(String[] args)
+    {
+        Scanner wejscie = new Scanner(System.in);
+        int ileLiter = wejscie.nextInt();
+        StringBuffer napis = new StringBuffer();
+        for(int i=97; i<97+ileLiter; i++) napis.append((char)i);
+        String napis1 = napis.toString();
+        int length = napis.length();
+
+        Permutacje permutacja = new Permutacje();
+        permutacja.permute(napis1, 0, length-1);
+
+    }
+
+    private void permute(String napis1, int f, int l)
+    {
+        if(f==l) System.out.println(napis1);
+        else
+        {
+            for(int i=f; i<=l; i++)
+            {
+                napis1 = swap(napis1, f, i);
+                permute(napis1, f+1, l);
+                napis1 = swap(napis1, f, i);
+            }
+        }
+    }
+    public String swap(String a, int f1, int l1)
+    {
+        char temp = a.charAt(f1);
+        char[] alphabet = a.toCharArray();
+        alphabet[f1] = alphabet[l1];
+        alphabet[l1] = temp;
+        return String.valueOf(alphabet);
+    }
+}

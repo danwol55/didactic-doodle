@@ -1,0 +1,18 @@
+import java.math.BigInteger;
+import java.util.Scanner;
+
+public class Exponent
+{
+    public static void main(String[] args)
+    {
+        Scanner input = new Scanner(System.in);
+
+        String a = input.next();
+        int b = input.nextInt();
+
+        BigInteger a1 = new BigInteger(a);
+
+        String c1 = a1.pow(b).toString();
+        System.out.println(c1);
+    }
+}

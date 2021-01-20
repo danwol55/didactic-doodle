@@ -1,0 +1,39 @@
+import java.util.Scanner;
+
+import static java.lang.Math.sqrt;
+
+public class SigNumbers
+{
+    public static void main(String[] args)
+    {
+        Scanner input = new Scanner(System.in);
+        int zestaw = input.nextInt();
+        for(int i=0; i<zestaw; i++)
+        {
+            int p1 = input.nextInt();
+            int p2 = input.nextInt();
+            float average, pierwiastek;
+            int counter=0, suma=0, numbers=0;
+
+            for(int j=p1; j<=p2; j++)
+            {
+                for(int j1=2; j1<j; j1++)
+                {
+                    if(j%j1==0)
+                    {
+                        counter++;
+                        suma += j1;
+                    }
+                }
+                if(counter>0)
+                {
+                    average = (float) suma / counter;
+                    pierwiastek = (float) sqrt(j);
+                    if (average <= pierwiastek) numbers++;
+                    counter = 0;
+                }
+            }
+            System.out.println(numbers);
+        }
+    }
+}

@@ -1,0 +1,46 @@
+import java.util.Scanner;
+
+import java.lang.String;
+
+import static java.lang.Character.isLowerCase;
+
+public class projekt3
+{
+    public static void main(String[] args)
+    {
+        String wiadomosc;
+        String wiadomosc1="";
+        boolean przerwa = false;
+        Scanner wejscie = new Scanner(System.in);
+        while(wejscie.hasNext())
+        {
+            wiadomosc = wejscie.nextLine();
+            for(int i=0; i<wiadomosc.length(); i++)
+            {
+                if(wiadomosc.charAt(i)==';')
+                {
+                    przerwa = true;
+                }
+                if(wiadomosc.charAt(i)==32 && wiadomosc.charAt(i+1)!=32)
+                {
+                    boolean jaki = isLowerCase(wiadomosc.charAt(i+1));
+                    if(jaki == true)
+                    {
+                        int code_ascii = (int) wiadomosc.charAt(i + 1);
+                        code_ascii -= 32;
+                        char znak = (char) code_ascii;
+                        wiadomosc1 += znak; i++;
+                    }
+                }
+                else if(wiadomosc.charAt(i)!=32)
+                {
+                    wiadomosc1 += wiadomosc.charAt(i);
+                }
+            }
+            wiadomosc1 += "\n";
+            if(przerwa == true) break;
+        }
+        System.out.println(wiadomosc1);
+
+    }
+}

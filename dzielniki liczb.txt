@@ -1,0 +1,29 @@
+import java.math.BigInteger;
+import java.util.Scanner;
+
+public class Dividers
+{
+    public static void main(String[] args)
+    {
+        Scanner input = new Scanner(System.in);
+        int suite = input.nextInt();
+
+        for(int i=0; i<suite; i++)
+        {
+            String a = input.next();
+            String b = input.next();
+
+            BigInteger a1 = new BigInteger(a);
+            BigInteger b1 = new BigInteger(b);
+
+            String c = (a1.remainder(b1)).toString();
+            BigInteger c1 = new BigInteger(c);
+
+            int c2 = c1.intValue();
+            if (c2 == 0) System.out.println("TAK");
+            else System.out.println("NIE");
+
+        }
+
+    }
+}

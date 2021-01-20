@@ -1,0 +1,71 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Gimnastyk
+{
+    public static void main(String[] args)
+    {
+        Scanner input = new Scanner(System.in);
+        int numberOfObjects = input.nextInt();
+        int time = input.nextInt();
+        int width = input.nextInt();
+        int a1 = input.nextInt();
+        int b1 = input.nextInt();
+        int speed = input.nextInt();
+        double completeTime = 0;
+        int counter = 0;
+
+        float time2 = width;
+        int distance1 = a1 - width;
+        float time1 = (float)distance1 / speed;
+
+        Punkt points[] = new Punkt[numberOfObjects];
+        double times[] = new double[numberOfObjects];
+        double distances[] = new double[numberOfObjects];
+        for(int i=0; i<numberOfObjects; i++)
+        {
+            int a = input.nextInt();
+            int b = input.nextInt();
+            points[i] = new Punkt(a, b);
+            points[i].calculateDistance(a, b, b1);
+            distances[i] = points[i].distance;
+        }
+        Arrays.sort(distances);
+        for(int i=0; i<numberOfObjects; i++)
+        {
+            System.out.println(distances[i]);
+        }
+        for(int i=0; i<numberOfObjects; i++)
+        {
+            times[i] = distances[i] / speed;
+        }
+        for(int i=0; i<numberOfObjects; i++)
+        {
+            if(completeTime<time)
+            {
+                completeTime += 2 * (time1 + time2 + distances[i]);
+                counter++;
+            }
+            else
+            {
+                System.out.println(counter);
+		break;
+            }
+        }
+    }
+    public static class Punkt
+    {
+        int X, Y;
+        double distance;
+        public void calculateDistance(int a, int b, int b1)
+        {
+            distance = Math.sqrt(a*a + (b-b1) * (b-b1));
+        }
+
+        public Punkt(int a, int b)
+        {
+            this.X = a;
+            this.Y = b;
+        }
+    }
+}

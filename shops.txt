@@ -1,0 +1,41 @@
+import java.util.*;
+
+public class Shops
+{
+    public static void main(String[] args)
+    {
+        Scanner input = new Scanner(System.in);
+        int numberOfArticles = input.nextInt();
+        LinkedHashMap<Integer, Integer> items = new LinkedHashMap<>();
+        for(int i=0; i<numberOfArticles; i++)
+        {
+            Integer a = input.nextInt();
+            Integer b = input.nextInt();
+            if(items.isEmpty()) items.put(a, b);
+            else
+            {
+                boolean appear = false;
+                for(HashMap.Entry<Integer, Integer>enter : items.entrySet())
+                {
+                    Integer key = enter.getKey();
+                    Integer value = enter.getValue();
+                    if(key.equals(a))
+                    {
+                        appear = true;
+                        int sum = value + b;
+                        items.replace(key, sum);
+                    }
+                }
+                if(!appear) items.put(a, b);
+            }
+
+        }
+        System.out.println(items.size());
+        for(HashMap.Entry<Integer, Integer>enter : items.entrySet())
+        {
+            Integer key = enter.getKey();
+            Integer value = enter.getValue();
+            System.out.println(key+" "+value);
+        }
+    }
+}

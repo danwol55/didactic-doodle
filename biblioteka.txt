@@ -1,0 +1,30 @@
+import java.util.Scanner;
+
+public class Biblioteka
+{
+    public static void main(String[] args)
+    {
+        Scanner wejscie = new Scanner(System.in);
+        int zestaw = wejscie.nextInt();
+        for(int i=0; i<zestaw; i++)
+        {
+            int ileKart = wejscie.nextInt();
+            int biblioteka[] = new int[ileKart];
+            for(int j=0; j<ileKart; j++)
+            {
+                biblioteka[j] = wejscie.nextInt();
+            }
+            int suma = 0;
+            for(int j=1; j<ileKart; j++)
+            {
+                biblioteka[0] += biblioteka[j];
+                suma += biblioteka[0];
+            }
+            System.out.println(suma);
+            for(int j=2; j<=ileKart; j++)
+            {
+                System.out.println(1 + " " + j);
+            }
+        }
+    }
+}

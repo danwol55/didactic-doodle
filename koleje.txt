@@ -1,0 +1,70 @@
+import java.util.Scanner;
+
+public class Rails
+{
+    public static void main(String[] args)
+    {
+        Scanner input = new Scanner(System.in);
+        int numberOfCities = input.nextInt();
+        int numberOfSeats = input.nextInt();
+        int notifications = input.nextInt();
+        Bookings[] tab = new Bookings[notifications];
+        for (int i = 0; i < notifications; i++)
+        {
+            int a = input.nextInt();
+            int b = input.nextInt();
+            int c = input.nextInt();
+            tab[i] = new Bookings(a, b, c, i);
+        }
+
+        int bookings = 0;
+        for(int j=1; j<numberOfCities; j++)
+        {
+            for (int i = 0; i < tab.length; i++)
+            {
+                if (tab[i].startStation == j)
+                {
+                    if(tab[i].startStation != 1)
+                    {
+                        for(int i1=0; i1<tab.length; i1++)
+                        {
+                            if(tab[i1].finalStation==j)
+                            {
+                                if(tab[i1].authorization=='T')
+                                {
+                                    bookings -= tab[i1].reservations;
+                                }
+                            }
+                        }
+                    }
+                    if (bookings + tab[i].reservations <= numberOfSeats)
+                    {
+                        bookings += tab[i].reservations;
+                        tab[i].authorization = 'T';
+                    }
+                    else tab[i].authorization = 'N';
+                }
+            }
+        }
+        for (int i = 0; i < notifications; i++)
+        {
+            System.out.println(tab[i].authorization);
+        }
+    }
+    public static class Bookings
+    {
+        int startStation;
+        int finalStation;
+        int reservations;
+        char authorization;
+        int numberOfReservation;
+
+        public Bookings(int a, int b, int c, int d)
+        {
+            this.startStation = a;
+            this.finalStation = b;
+            this.reservations = c;
+            this.numberOfReservation = d;
+        }
+    }
+}

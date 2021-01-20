@@ -1,0 +1,22 @@
+import java.math.BigInteger;
+import java.util.Scanner;
+
+public class BigNumbers
+{
+    public static void main(String[] args)
+    {
+        Scanner input = new Scanner(System.in);
+        int suit = input.nextInt();
+        for(int i=0; i<suit; i++)
+        {
+            String a = input.next();
+            String b = input.next();
+
+            BigInteger a1 = new BigInteger(a);
+            BigInteger b1 = new BigInteger(b);
+            BigInteger c1 = a1.add(b1);
+
+            System.out.println(c1);
+        }
+    }
+}

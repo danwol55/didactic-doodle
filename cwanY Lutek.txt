@@ -1,0 +1,28 @@
+import java.util.Scanner;
+
+public class Variant
+{
+    public static void main(String[] args)
+    {
+        Scanner input = new Scanner(System.in);
+        int t = input.nextInt();
+        for(int z=0; z<t; z++)
+        {
+            int n = input.nextInt();
+            int k = input.nextInt();
+            int r = n - k;
+            long iloczyn = 1L;
+            if(r==0) System.out.println('N');
+            else
+            {
+                for (int i = r + 1; i < n + 1; i++)
+                {
+                    iloczyn *= i;
+                }
+                System.out.print(iloczyn);
+                if (iloczyn % 2 == 0) System.out.println('P');
+                else System.out.println('N');
+            }
+        }
+    }
+}

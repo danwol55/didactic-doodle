@@ -1,0 +1,58 @@
+import java.util.Scanner;
+
+public class Vocabular
+{
+    public static void main(String[] args)
+    {
+        Scanner input = new Scanner(System.in);
+        int n = input.nextInt();
+        int k = input.nextInt();
+
+        String words[] = new String[n];
+        String numbers[] = new String[k];
+
+        for(int i=0; i<n; i++)
+        {
+            words[i] = input.next();
+        }
+        for(int i=0; i<k; i++)
+        {
+            numbers[i] = input.next();
+        }
+
+        String leters[] = new String[]{"abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+
+        for(int i=0; i<numbers.length; i++)
+        {
+            boolean noneMatch = true;
+            String actualNumber = numbers[i];
+            for (int i1 = 0; i1 < words.length; i1++)
+            {
+                int counter = 0;
+                String actualWord = words[i1];
+                if(actualWord.length()==actualNumber.length())
+                {
+                    for (int j = 0; j < numbers[i].length(); j++)
+                    {
+                        int actualIndex = (int) (numbers[i].charAt(j)) - 50;
+                        char actualLetter = actualWord.charAt(j);
+                        String vocabular = leters[actualIndex];
+                        for (int j1 = 0; j1 < vocabular.length(); j1++)
+                        {
+                            if (vocabular.charAt(j1) == actualLetter)
+                            {
+                                counter++;
+                            }
+                        }
+                    }
+                    if (counter == actualWord.length())
+                    {
+                        System.out.println(actualWord);
+                        noneMatch = false;
+                    }
+                }
+            }
+            if(noneMatch) System.out.println("brak");
+        }
+    }
+}

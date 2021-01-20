@@ -1,0 +1,46 @@
+import java.util.Scanner;
+import java.util.Vector;
+
+public class Sample
+{
+    public static void main(String[] args)
+    {
+        Scanner input = new Scanner(System.in);
+        Vector<Integer>vector = new Vector<>();
+        int suite = input.nextInt();
+        for(int i=0; i<suite; i++)
+        {
+            String sample = input.next();
+            String text = input.next();
+            int counter = 0, index = 0;
+            int firstIndex=0;
+
+            for(int i1=0; i1<text.length(); i1++)
+            {
+                if(text.charAt(i1)==sample.charAt(index))
+                {
+                    firstIndex = i1;
+                    for(int i2=i1; i2<text.length(); i2++)
+                    {
+                        if(text.charAt(i2)==sample.charAt(index))
+                        {
+                            counter++; index++;
+                        }
+                        else
+                        {
+                            firstIndex=0;
+                            break;
+                        }
+                        if(counter==sample.length())
+                        {
+                            vector.add(firstIndex);
+                            counter=0; index=0; firstIndex=0;
+                        }
+                    }
+                }
+            }
+            System.out.println(vector);
+            vector.clear();
+        }
+    }
+}

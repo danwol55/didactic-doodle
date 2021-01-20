@@ -1,0 +1,88 @@
+import java.util.Scanner;
+
+public class Bitolandia
+{
+    public static void main(String[] args)
+    {
+        Scanner input = new Scanner(System.in);
+        int numberOfCities = input.nextInt();
+        int connections1 = input.nextInt();
+        int connections2 = input.nextInt();
+        Connections tab1[] = new Connections[connections1];
+        Prepositions tab2[] = new Prepositions[connections2];
+        for(int i=0; i<connections1; i++)
+        {
+            int a = input.nextInt();
+            int b = input.nextInt();
+            int c = input.nextInt();
+            tab1[i] = new Connections(a, b, c);
+        }
+        for(int i=0; i<connections2; i++)
+        {
+            int a = input.nextInt();
+            int b = input.nextInt();
+            int c = input.nextInt();
+            tab2[i] = new Prepositions(a, b, c);
+        }
+
+        for(int i=0; i<connections1; i++)
+        {
+            int index=0;
+            int city1 = tab1[i].cityA;
+            int city2 = tab1[i].cityB;
+            int minDriveTime = tab1[i].driveTime;
+            boolean isBetterDriveTime = false;
+
+            for(int i1=0; i1<connections2; i1++)
+            {
+                int city11 = tab2[i1].cityA;
+                int city22 = tab2[i1].cityB;
+                int driveTime = tab2[i1].driveTime;
+                if((city1==city11 && city2==city22)
+                  || (city1==city22 && city2==city11))
+                {
+                    if(driveTime<minDriveTime)
+                    {
+                        index = i1;
+                        minDriveTime = driveTime;
+                        isBetterDriveTime = true;
+                    }
+                }
+            }
+            if (isBetterDriveTime)
+            {
+                tab2[index].agree=1;
+            }
+        }
+        for(int i=0; i<connections2; i++)
+        {
+            System.out.println(tab2[i].agree);
+        }
+
+    }
+    public static class Connections
+    {
+        int cityA, cityB;
+        int driveTime;
+
+        public Connections(int cityA, int cityB, int driveTime)
+        {
+            this.cityA = cityA;
+            this.cityB = cityB;
+            this.driveTime = driveTime;
+        }
+    }
+    public static class Prepositions
+    {
+        int cityA, cityB;
+        int driveTime;
+        int agree=0;
+
+        public Prepositions(int cityA, int cityB, int driveTime)
+        {
+            this.cityA = cityA;
+            this.cityB = cityB;
+            this.driveTime = driveTime;
+        }
+    }
+}

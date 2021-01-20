@@ -1,0 +1,131 @@
+import java.util.HashMap;
+import java.util.Scanner;
+
+public class Conference
+{
+    public static void main(String[] args)
+    {
+        Scanner input = new Scanner(System.in);
+        int presentations = input.nextInt();
+        int reservations = input.nextInt();
+        int roomSize = input.nextInt();
+        int costRent = input.nextInt();
+        int ticketsCost[] = new int[presentations];
+        int reservedNumbers[] = new int[reservations];
+        HashMap <Integer, Integer> Map = new HashMap<>();
+
+        for(int i=0; i<presentations; i++)
+        {
+            ticketsCost[i] = input.nextInt();
+        }
+        for(int i=0; i<reservations; i++)
+        {
+            Integer presentationNumber = input.nextInt();
+            Integer numberOfPersons = input.nextInt();
+            Map.put(presentationNumber, numberOfPersons);
+            reservedNumbers[i] = presentationNumber;
+        }
+        if(reservations<presentations)
+        {
+            for(int i=1; i<=presentations; i++)
+            {
+                boolean isReserved = false;
+                for(int i1=0; i1<reservations; i1++)
+                {
+                    if(reservedNumbers[i1]==i) isReserved = true;
+                }
+                if(!isReserved) Map.put(i, 0);
+
+            }
+
+        }
+
+        for(HashMap.Entry<Integer, Integer> enter : Map.entrySet())
+        {
+            Integer key = enter.getKey();
+            Integer value = enter.getValue();
+            System.out.println(key+" "+value);
+        }
+
+        int balance = 0;
+        int surplusPersons = 0;
+
+        for(HashMap.Entry<Integer, Integer> enter : Map.entrySet())
+        {
+            Integer profit;
+            Integer key = enter.getKey();
+            Integer persons = enter.getValue();
+            if(persons>roomSize)
+            {
+                surplusPersons += persons - roomSize;
+                balance += roomSize * ticketsCost[key-1] - costRent;
+            }
+            else if(persons<0.5*roomSize)
+            {
+                profit = persons * ticketsCost[key-1] - costRent;
+                if(profit<=0)
+                {
+                    surplusPersons += persons;
+                    enter.setValue(0);
+                }
+            }
+            else balance += persons * ticketsCost[key-1] - costRent;
+        }
+        if(surplusPersons>0)
+        {
+            while(surplusPersons!=0)
+            {
+                boolean firstMaxPrice = false;
+                int reservationKey = 0, maxPrice = 0;
+                for (HashMap.Entry<Integer, Integer> enter : Map.entrySet())
+                {
+                    Integer key = enter.getKey();
+                    Integer value = enter.getValue();
+                    if (value > 0) continue;
+                    else if (value == 0)
+                    {
+                        if (!firstMaxPrice)
+                        {
+                            firstMaxPrice = true;
+                            maxPrice = ticketsCost[key - 1];
+                            reservationKey = key;
+                        }
+                        else
+                        {
+                            if (ticketsCost[key - 1] > maxPrice)
+                            {
+                                maxPrice = ticketsCost[key - 1];
+                                reservationKey = key;
+                            }
+                        }
+                    }
+                }
+                if (firstMaxPrice)
+                {
+                    int profit;
+                    if (surplusPersons <= roomSize)
+                    {
+                        profit = surplusPersons * maxPrice - costRent;
+                        if (profit > 0)
+                        {
+                            balance += profit;
+                            Map.replace(reservationKey, surplusPersons);
+                        }
+                        surplusPersons = 0;
+                    }
+                    else if(surplusPersons>roomSize)
+                    {
+                        profit = (surplusPersons - roomSize) * maxPrice - costRent;
+                        if(profit>0)
+                        {
+                            balance += profit;
+                            Map.replace(reservationKey, roomSize);
+                        }
+                    }
+                }
+                else surplusPersons = 0;
+            }
+        }
+        System.out.println(balance);
+    }
+}

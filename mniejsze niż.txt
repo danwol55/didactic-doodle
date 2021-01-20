@@ -1,0 +1,32 @@
+import java.util.Scanner;
+
+public class smallerThan
+{
+    public static void main(String[] args)
+    {
+        Scanner input = new Scanner(System.in);
+        int sizeA = input.nextInt();
+        int sizeB = input.nextInt();
+        int tabA[] = new int[sizeA];
+        int tabB[] = new int[sizeB];
+
+        for(int i=0; i<sizeA; i++)
+        {
+            tabA[i] = input.nextInt();
+        }
+        for(int i=0; i<sizeB; i++)
+        {
+            tabB[i] = input.nextInt();
+        }
+
+        for(int i=0; i<sizeB; i++)
+        {
+            int counter = 0;
+            for(int j=0; j<sizeA; j++)
+            {
+                if(tabA[j]<tabB[i]) counter++;
+            }
+            System.out.println(counter);
+        }
+    }
+}

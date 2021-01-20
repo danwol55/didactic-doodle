@@ -1,0 +1,25 @@
+import java.util.Scanner;
+
+public class Numbers
+{
+    public static void main(String[] args)
+    {
+        Scanner input = new Scanner(System.in);
+        int number = input.nextInt();
+        for(int i=number;; i++)
+        {
+            int parzyste=0;
+            int nieparzyste=0;
+            for(int j=1; j<=i; j++)
+            {
+                if(i%j==0 && j%2==0) parzyste++;
+                if(i%j==0 && j%2!=0) nieparzyste++;
+            }
+            if(parzyste==nieparzyste)
+            {
+                System.out.println(i);
+                break;
+            }
+        }
+    }
+}
