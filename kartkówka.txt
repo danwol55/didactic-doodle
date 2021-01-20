@@ -1,0 +1,23 @@
+import java.math.BigInteger;
+import java.util.Scanner;
+
+public class projekt2
+{
+    public static void main(String[] args)
+    {
+        short zestaw;
+        Scanner wejscie1 = new Scanner(System.in);
+        zestaw = wejscie1.nextShort();
+        for(short i=0; i<zestaw; i++)
+        {
+            Scanner wejscie = new Scanner(System.in);
+            String liczbaA = wejscie.nextLine();
+            BigInteger liczba1 = new BigInteger(liczbaA);
+            BigInteger liczba2 = new BigInteger("5");
+            BigInteger wynik = liczba1.divide(liczba2);
+            System.out.println(wynik);
+        }
+
+
+    }
+}

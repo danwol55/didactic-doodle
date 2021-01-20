@@ -1,0 +1,78 @@
+import java.util.*;
+import java.math.*;
+import java.lang.*;
+
+public class projekt2
+{
+    public static void main(String[] args)
+    {
+        Scanner wejscie = new Scanner(System.in);
+        String napis = wejscie.next();
+        int ileSkalowan = wejscie.nextInt();
+        int skalowania[] = new int[ileSkalowan];
+        for(int i=0; i<ileSkalowan; i++)
+        {
+            skalowania[i] = wejscie.nextInt();
+        }
+        for(int i=0; i<ileSkalowan; i++)
+        {
+            String napis1 = "";
+            int skala = skalowania[i];
+            if(skala == 0)
+            {
+                System.out.println(napis.charAt(napis.length()-1));
+            }
+            else if(skala == 1)
+            {
+                System.out.println(napis);
+            }
+            else if(skala>1)
+            {
+                for(int j=0; j<napis.length(); j++)
+                {
+                    if(j!=napis.length()-1)
+                    {
+                        napis1 += napis.charAt(j);
+                        for(int j1=0; j1<skala; j1++)
+                        {
+                            napis1 += (char)32;
+                        }
+                    }
+                    else napis1+=napis.charAt(j);
+                }
+                System.out.println(napis1);
+            }
+            else if(skala==-1)
+            {
+                StringBuilder napisA = new StringBuilder();
+                napisA.append(napis);
+                napisA = napisA.reverse();
+                System.out.println(napisA);
+            }
+            else if(skala<-1)
+            {
+                skala = Math.abs(skala);
+                StringBuilder napisA = new StringBuilder();
+                napisA.append(napis);
+                napisA = napisA.reverse();
+                String napis2 = napisA.toString();
+                for(int j=0; j<napis2.length(); j++)
+                {
+                    if(j!=napis2.length()-1)
+                    {
+                        napis1 += napis2.charAt(j);
+                        for(int j1=0; j1<skala; j1++)
+                        {
+                            napis1 += (char)32;
+                        }
+                    }
+                    else napis1+=napis2.charAt(j);
+                }
+                System.out.println(napis1);
+            }
+        }
+
+
+    }
+
+}

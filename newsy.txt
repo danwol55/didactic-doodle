@@ -1,0 +1,39 @@
+import java.util.Scanner;
+import java.lang.String;
+
+public class projekt2
+{
+    public static void main(String[] args)
+    {
+        short zestaw;
+        Scanner wejscie = new Scanner(System.in);
+        zestaw = wejscie.nextShort();
+        for(int i=0; i<zestaw; i++)
+        {
+            String kolejnosc = "";
+            int ile_osob = wejscie.nextInt();
+            int ile_wiadomosci = wejscie.nextInt();
+            String numer_pierwszej = wejscie.next();
+            String tablica[] = new String[ile_wiadomosci];
+            kolejnosc += numer_pierwszej;
+
+            for(int j=0; j<ile_wiadomosci; j++)
+            {
+                tablica[j] = wejscie.nextLine();
+            }
+            for(int j=0; j<ile_osob; j++)
+            {
+                char aktualnySymbol = kolejnosc.charAt(j);
+                for(int j1=0; j1<ile_wiadomosci; j1++)
+                {
+                    if (tablica[j1].charAt(0) == aktualnySymbol)
+                    {
+                        kolejnosc += tablica[j1].charAt(2);
+                    }
+                }
+            }
+        }
+
+
+    }
+}

@@ -1,0 +1,39 @@
+import java.util.*;
+import java.math.*;
+import java.lang.*;
+
+public class projekt2
+{
+    public static void main(String[] args)
+    {
+        Scanner wejscie = new Scanner(System.in);
+        int liczbaKwiatowJasia = wejscie.nextInt();
+        int[] kwiecistoscJ = new int[liczbaKwiatowJasia];
+        for(int i=0; i<liczbaKwiatowJasia; i++)
+        {
+            kwiecistoscJ[i] = wejscie.nextInt();
+        }
+        int liczbaKwiatowStasia = wejscie.nextInt();
+        int[] kwiecistoscS = new int[liczbaKwiatowStasia];
+        for(int i=0; i<liczbaKwiatowStasia; i++)
+        {
+            kwiecistoscS[i] = wejscie.nextInt();
+        }
+        int najmniejszaRoznica = Math.abs(kwiecistoscJ[0]-kwiecistoscS[0]);
+        for(int i=0; i<liczbaKwiatowJasia; i++)
+        {
+            for(int j=0; j<liczbaKwiatowStasia; j++)
+            {
+                if(i==0 && j==0) continue;
+                int wynik = Math.abs(kwiecistoscJ[i]-kwiecistoscS[j]);
+                if(wynik<najmniejszaRoznica)
+                {
+                    najmniejszaRoznica = wynik;
+                }
+            }
+        }
+        System.out.println(najmniejszaRoznica);
+
+    }
+
+}

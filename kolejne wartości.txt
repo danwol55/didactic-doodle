@@ -1,0 +1,39 @@
+import java.util.*;
+import java.lang.*;
+
+public class projekt2
+{
+    public static void main(String[] args)
+    {
+        Scanner wejscie = new Scanner(System.in);
+        int ile = wejscie.nextInt();
+        int numbers[] = new int[ile];
+        for(int i=0; i<ile; i++)
+        {
+            numbers[i] = wejscie.nextInt();
+        }
+        int ileZapytan = wejscie.nextInt();
+        int questions[] = new int[ileZapytan];
+        for(int i=0; i<ileZapytan; i++)
+        {
+            questions[i] = wejscie.nextInt();
+        }
+        for(int i=0; i<ileZapytan; i++)
+        {
+            int counter = 0;
+            for(int j=0; j<ile; j++)
+            {
+                if(questions[i]==numbers[j])
+                {
+                    counter++;
+                }
+            }
+            if(counter>=3) System.out.println("TAK");
+            else if(counter<3 && counter>0) System.out.println("NIE");
+            else System.out.println("brak");
+        }
+
+
+    }
+
+}

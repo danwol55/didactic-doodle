@@ -1,0 +1,41 @@
+import java.util.*;
+import java.math.*;
+import java.lang.*;
+
+public class projekt2
+{
+    public static void main(String[] args)
+    {
+        Scanner wejscie = new Scanner(System.in);
+        int zestaw = wejscie.nextInt();
+        String godzina1, godzina2;
+        for(int i=0; i<zestaw; i++)
+        {
+            godzina1 = wejscie.next();
+            godzina2 = wejscie.next();
+            int godzina11 = (godzina1.charAt(0)-48)*10;
+            godzina11 += (godzina1.charAt(1)-48);
+            int godzina22 = (godzina2.charAt(0)-48)*10;
+            godzina22 += (godzina2.charAt(1)-48);
+            int minuta11 = (godzina1.charAt(3)-48)*10;
+            minuta11 += (godzina1.charAt(4)-48);
+            int minuta22 = (godzina2.charAt(3)-48)*10;
+            minuta22 += (godzina2.charAt(4)-48);
+            //zamieniam na sekundy
+            int sekund1 = godzina11*3600 + minuta11*60;
+            int sekund2 = godzina22*3600 + minuta22*60;
+            if(sekund2<sekund1)
+            {
+                sekund2+=86400;
+            }
+            int pokrycia = 0;
+            for(int j=sekund1; j<=sekund2; j+=3900)
+            {
+                pokrycia++;
+            }
+            System.out.println(pokrycia);
+        }
+
+    }
+
+}

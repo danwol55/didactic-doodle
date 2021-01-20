@@ -1,0 +1,48 @@
+import java.util.Scanner;
+
+public class projekt1
+{
+    public static void main(String[] args)
+    {
+        Scanner wejscie = new Scanner(System.in);
+        String dane = wejscie.nextLine();
+        String dane1[] = dane.split(" ");
+        String kod = dane1[0];
+        int ile = Integer.parseInt(dane1[1]);
+        String pesel[] = new String[ile];
+        for(int i=0; i<ile; i++)
+        {
+            pesel[i] = wejscie.nextLine();
+        }
+        short punkt=0;
+        for(int i=0; i<ile; i++)
+        {
+            int plec = pesel[i].charAt(9)-48;
+            int rok = pesel[i].charAt(1)-48;
+            switch(kod.charAt(0))
+            {
+                case '1':
+                    for(int j=1; j<=9; j+=2)
+                    {
+                        if (plec == j)
+                        {
+                            punkt++;
+                        }
+                    }
+                    break;
+                case '2':
+                    for (int j = 0; j <= 8; j += 2)
+                    {
+                        if (plec == j)
+                        {
+                            punkt++;
+                        }
+                    }
+            }
+        }
+        System.out.println(punkt);
+
+
+
+    }
+}

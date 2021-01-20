@@ -1,0 +1,131 @@
+import java.util.*;
+import java.lang.*;
+
+public class projekt2
+{
+    public static void main(String[] args)
+    {
+        Scanner wejscie = new Scanner(System.in);
+        while(wejscie.hasNextLine())
+        {
+            String szyfr = "";
+            String napis = wejscie.nextLine();
+            for(int i=0; i<napis.length(); i++)
+            {
+                if(napis.charAt(i)=='a' || napis.charAt(i)=='A')
+                {
+                    szyfr+=".-/";
+                }
+                if(napis.charAt(i)=='b' || napis.charAt(i)=='B')
+                {
+                    szyfr+="-.../";
+                }
+                if(napis.charAt(i)=='c' || napis.charAt(i)=='C')
+                {
+                    szyfr+="-.-./";
+                }
+                if(napis.charAt(i)=='d' || napis.charAt(i)=='D')
+                {
+                    szyfr+="-../";
+                }
+                if(napis.charAt(i)=='e' || napis.charAt(i)=='E')
+                {
+                    szyfr+="./";
+                }
+                if(napis.charAt(i)=='f' || napis.charAt(i)=='F')
+                {
+                    szyfr+=".-../";
+                }
+                if(napis.charAt(i)=='g' || napis.charAt(i)=='G')
+                {
+                    szyfr+="--./";
+                }
+                if(napis.charAt(i)=='h' || napis.charAt(i)=='H')
+                {
+                    szyfr+="..../";
+                }
+                if(napis.charAt(i)=='i' || napis.charAt(i)=='I')
+                {
+                    szyfr+="../";
+                }
+                if(napis.charAt(i)=='j' || napis.charAt(i)=='J')
+                {
+                    szyfr+=".---/";
+                }
+                if(napis.charAt(i)=='k' || napis.charAt(i)=='K')
+                {
+                    szyfr+="-.-/";
+                }
+                if(napis.charAt(i)=='l' || napis.charAt(i)=='L')
+                {
+                    szyfr+="..-./";
+                }
+                if(napis.charAt(i)=='m' || napis.charAt(i)=='M')
+                {
+                    szyfr+="--/";
+                }
+                if(napis.charAt(i)=='n' || napis.charAt(i)=='N')
+                {
+                    szyfr+="-./";
+                }
+                if(napis.charAt(i)=='o' || napis.charAt(i)=='O')
+                {
+                    szyfr+="---/";
+                }
+                if(napis.charAt(i)=='p' || napis.charAt(i)=='P')
+                {
+                    szyfr+=".--./";
+                }
+                if(napis.charAt(i)=='q' || napis.charAt(i)=='Q')
+                {
+                    szyfr+="--.-/";
+                }
+                if(napis.charAt(i)=='r' || napis.charAt(i)=='R')
+                {
+                    szyfr+=".-./";
+                }
+                if(napis.charAt(i)=='s' || napis.charAt(i)=='S')
+                {
+                    szyfr+=".../";
+                }
+                if(napis.charAt(i)=='t' || napis.charAt(i)=='T')
+                {
+                    szyfr+="-/";
+                }
+                if(napis.charAt(i)=='u' || napis.charAt(i)=='U')
+                {
+                    szyfr+="..-/";
+                }
+                if(napis.charAt(i)=='v' || napis.charAt(i)=='V')
+                {
+                    szyfr+="...-/";
+                }
+                if(napis.charAt(i)=='w' || napis.charAt(i)=='W')
+                {
+                    szyfr+=".--/";
+                }
+                if(napis.charAt(i)=='x' || napis.charAt(i)=='X')
+                {
+                    szyfr+="-..-/";
+                }
+                if(napis.charAt(i)=='y' || napis.charAt(i)=='Y')
+                {
+                    szyfr+="-.--/";
+                }
+                if(napis.charAt(i)=='z' || napis.charAt(i)=='Z')
+                {
+                    szyfr+="--../";
+                }
+                if(napis.charAt(i)==' ')
+                {
+                    szyfr+='/';
+                }
+            }
+            System.out.println(szyfr);
+        }
+
+
+
+    }
+
+}

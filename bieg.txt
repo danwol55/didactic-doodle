@@ -1,0 +1,54 @@
+import java.util.*;
+import java.math.*;
+import java.lang.*;
+
+public class projekt2
+{
+    public static void main(String[] args)
+    {
+        int odcinki;
+        long poczatek, koniec;
+        Scanner wejscie = new Scanner(System.in);
+        odcinki = wejscie.nextInt();
+        for(int i=0; i<odcinki; i++)
+        {
+            long punktow=0;
+            poczatek = wejscie.nextLong();
+            koniec = wejscie.nextLong();
+            for(long j=poczatek; j<koniec; j++)
+            {
+                if(j%3==0 && j%5!=0 && j%10!=0)
+                {
+                    punktow += 3;
+                }
+                if(j%3!=0 && j%5==0 && j%10!=0)
+                {
+                    punktow += 5;
+                }
+                if(j%3!=0 && j%5!=0 && j%10==0)
+                {
+                    punktow += 10;
+                }
+                if(j%3==0 && j%5==0 && j%10!=0)
+                {
+                    punktow += 15;
+                }
+                if(j%3==0 && j%5!=0 && j%10==0)
+                {
+                    punktow += 30;
+                }
+                if(j%3!=0 && j%5==0 && j%10==0)
+                {
+                    punktow += 50;
+                }
+                if(j%3==0 && j%5==0 && j%10==0)
+                {
+                    punktow += 150;
+                }
+
+            }
+            System.out.println(punktow);
+        }
+    }
+
+}
